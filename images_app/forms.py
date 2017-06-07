@@ -2,7 +2,7 @@ from django import forms
 from .models import Image
 from io import BytesIO
 from urllib2 import urlopen
-from urllib import request
+# from urllib import request
 from django.core.files.base import ContentFile, File
 from django.core.files.temp import NamedTemporaryFile
 from django.utils.text import slugify

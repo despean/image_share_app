@@ -32,6 +32,7 @@
                     image_url + '" /></a>');
             }
         });
+
         // when an image is selected open URL with it
         jQuery('#bookmarklet .images_app a').click(function (e) {
             selected_image = jQuery(this).children('img').attr('src');

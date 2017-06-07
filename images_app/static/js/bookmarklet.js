@@ -56,8 +56,7 @@
 // Create the script and point to Google API
         var script = document.createElement('script');
         script.setAttribute('src',
-            'http://ajax.googleapis.com/ajax/libs/jquery/' +
-            jquery_version + '/jquery.min.js');
+            'https://code.jquery.com/jquery-2.2.4.min.js');
 // Add the script to the 'head' for processing
         document.getElementsByTagName('head')[0].appendChild(script);
 // Create a way to wait until script loading

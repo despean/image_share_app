@@ -90,10 +90,10 @@ DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
     'NAME': 'd4qmut0fi1bl2v',
-    'HOST': 'ec2-107-21-99-176.compute-1.amazonaws.com',
-    'USER': 'wcbdouaqqsrvvf',
+    'HOST': '',
+    'USER': '',
     'PORT': '5432',
-    'PASSWORD': '33323a64e5d38c90000620e4160ffca2a4a01c9f9b082fc9bb9f867d93ff0ecc',
+    'PASSWORD': '',
   }
 }
 
@@ -126,15 +126,15 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # social auth
-SOCIAL_AUTH_FACEBOOK_KEY = '553325091721801'  # Facebook App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = 'a50329b247f7dfcccef0a0676010b6f3'  # Facebook App Secret
+SOCIAL_AUTH_FACEBOOK_KEY = ''  # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = ''  # Facebook App Secret
 
-SOCIAL_AUTH_TWITTER_KEY = 'mdI4jjBi4DDgTt7kAgxaUcrj7'
-SOCIAL_AUTH_TWITTER_SECRET = 'H7gjPFbxltg52APJpvZ0mRJa8fwEVwGjtPdq7j3DZ2N62aqB5y'
+SOCIAL_AUTH_TWITTER_KEY = ''
+SOCIAL_AUTH_TWITTER_SECRET = ''
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1002620928133-lsnoqbpsja5c8g6obmtqhp41bvv9svv0.apps.googleusercontent.com'  # Google Consumer Key
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'xY9MJ-TIPGaf0MpImcfVdCEQ'  # Google Consumer Secret
-GOOGLE_WHITE_LISTED_DOMAINS = ['django.com:8000']
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''  # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''  # Google Consumer Secret
+GOOGLE_WHITE_LISTED_DOMAINS = ['imagebookmarkshare.herokuapp.com']
 
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', ]
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {

@@ -25,7 +25,7 @@ SECRET_KEY = 'cqwfsl!+q55li=wt36b28bh292n&(u1c=#()f(x47k19sld=(m'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-  'imageshareapp.herokuapp.com'
+  ' imagebookmarkshare.herokuapp.com'
 ]
 
 # Application definition

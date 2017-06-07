@@ -1,6 +1,6 @@
 (function () {
     var jquery_version = '2.2.4';
-    var site_url = 'https://imagebookmarkshare.herokuapp.com';
+    var site_url = 'https://imagebookmarkshare.herokuapp.com/';
     var static_url = site_url + 'static/';
     var min_width = 300;
     var min_height = 300;

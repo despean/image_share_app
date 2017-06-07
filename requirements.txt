@@ -21,4 +21,5 @@ dj-static==0.0.6
 gunicorn==19.6.0
 whitenoise==3.2
 psycopg2==2.7.1
+-e git+https://github.com/jazzband/sorl-thumbnail.git#egg=sorl-thumbnail
 

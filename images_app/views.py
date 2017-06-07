@@ -29,7 +29,7 @@ def image_create(request):
     form = ImageCreateForm(data=request.GET)
   return render(request,
                 'images/image/create.html',
-                {'section': 'images_app',
+                {'section': 'images',
                  'form': form})
 
 
@@ -41,7 +41,7 @@ def image_detail(request, id, slug):
   image = get_object_or_404(Image, id=id, slug=slug)
   return render(request,
                 'images/image/detail.html',
-                {'section': 'images_app',
+                {'section': 'images',
                  'image': image})
 
 @ajax_required
@@ -85,7 +85,7 @@ def image_list(request):
   if request.is_ajax():
     return render(request,
     'images/image/list_ajax.html',
-    {'section': 'images_app', 'images_app': images})
+    {'section': 'images', 'images': images})
   return render(request,
     'images/image/list.html',
-    {'section': 'images_app', 'images_app': images})
+    {'section': 'images', 'images': images})

@@ -1,6 +1,7 @@
 from django import forms
 from .models import Image
 from io import BytesIO
+from urllib2 import urlopen
 from urllib import request
 from django.core.files.base import ContentFile, File
 from django.core.files.temp import NamedTemporaryFile
@@ -34,7 +35,8 @@ class ImageCreateForm(forms.ModelForm):
     image_name = '{}.{}'.format(slugify(Image.title),
                                 image_url.rsplit('.', 1)[1].lower())
     # download image from the given URL
-    response = request.urlopen(image_url)
+    # response = request.urlopen(image_url)
+    response = urlopen(image_url)
     img_temp.write(response.read())
     img_temp.flush()
     Image.image.save(image_name, File(img_temp),

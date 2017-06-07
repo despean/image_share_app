@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% block title %}People{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1 class="text-center card bg-faded mt-3">People</h1>
+        <div id="people-list" class="row ">
+            {% for user in users %}
+                {% if not user.is_superuser and  request.user != user%}
+                    <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-block">
+                            <a href="{{ user.get_absolute_url }}" class="card-img-top w-100">
+
+                                    <img src="{{ user.profile.get_thumb }}" class="w-100 rounded">
+
+                            </a>
+                            <div class="card-text">
+                                <a href="{{ user.get_absolute_url }}" class="card-title nav-link ">
+                                    {{ user.get_full_name }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

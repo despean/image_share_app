@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Log-in{% endblock %}
+{% block content %}
+    <div id="main-login" class="card mt-5">
+        <h1 class="card-header card-title text-center bg-inverse">LOG-IN</h1>
+        <div class="card-block">
+            <form action="." method="post">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <p><input type="submit" value="Log-in" class="btn btn-outline-info"></p>
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}

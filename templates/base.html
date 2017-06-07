@@ -1,0 +1,119 @@
+{% load static %}
+{% load app_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap-grid.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap-reboot.min.css' %}">
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+</head>
+<body>
+<div id="header" class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+    <div class="container">
+        <span class="navbar-brand logo"><a href="{% url 'main_index' %}"
+                                           class="text-white nav-link">Bookmarks</a></span>
+        {% if request.user.is_authenticated %}
+            <span class="navbar-nav mr-auto text-white">
+                <span class="nav-item" {% if section == "dashboard" %}class="active"{% endif %}>
+                    <a href="{% url "account:dashboard" %}" class="nav-link">My dashboard</a>
+                </span>
+                <span class="nav-item" {% if section == "images_app" %}class="active"{% endif %}>
+                    <a href="{% url "images:list" %}" class="nav-link">Images</a>
+                </span>
+                <span class="nav-item" {% if section == "people" %}class="active bg-faded"{% endif %}>
+                    <a href="{% url "account:user_list" %}" class="nav-link">People</a>
+                </span>
+            </span>
+            <div class="float-right">
+                <span><a class="nav-link float-right text-white" href="{% url 'account:logout' %}">Logout</a></span>
+                <span class="float-right text-white nav-link">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
+                              aria-haspopup="true" aria-expanded="false">
+                         {{ user.username|Capitalize }}
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-right">
+                          <a href="{% url 'account:edit' %}" class=" dropdown-item">Edit Profile</a>
+                      </div>
+                    </div>
+                   </span>
+
+                {% if user.profile.photo.url != None %}
+                    <span class=""><img class="pro-img" src="{{ user.profile.photo.url }}">
+                    </span>
+                {% else %}
+                    <span class=""><img class="pro-img" src="" alt="pic">
+                    </span>
+                {% endif %}
+            </div>
+
+        {% else %}
+            <div class="navbar-nav mr-auto"></div>
+            <span><a class="nav-link float-right text-white" href="{% url 'account:login' %}">Login</a></span>
+            <span><a class="nav-link float-right text-white" href="{% url 'account:register' %}">Register</a></span>
+        {% endif %}
+    </div>
+
+</div>
+{% if messages %}
+    <div class="w-50 m-auto">
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message|safe }}
+                </div>
+            {% elif message.tags == 'error' %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message|safe }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
+<div id="container">
+    {% block content %}
+
+    {% endblock %}
+</div>
+<script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="{% static 'js/base.js' %}"></script>
+<script>
+    var csrftoken = $.cookie('csrftoken');
+    console.log(csrftoken)
+    function csrfSafeMethod(method) {
+// these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+        beforeSend: function (xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+    $(function () {
+        {% block domready %}
+        {% endblock %}
+    });
+</script>
+</body>
+</html>

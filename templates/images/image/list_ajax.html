@@ -1,0 +1,24 @@
+{% load thumbnail %}
+<div class="row">
+    {% for image in images %}
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-block">
+                <a href="{{ image.get_absolute_url }}" class="card-img-top w-100">
+                    {% thumbnail image.image "200x150" crop="100%" as im %}
+                        <a class="w-100" href="{{ image.get_absolute_url }}">
+                            <img class="w-100" src="{{ im.url }}">
+                        </a>
+                    {% endthumbnail %}
+                </a>
+                <div class="card-text">
+                    <a href="{{ image.get_absolute_url }}" class="card-title nav-link text-success">
+                        {{ image.title }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
+</div>

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load app_tags %}
+{% block title %}Log-in{% endblock %}
+{% block content %}
+    <div id="main-login" class="mt-5">
+        <h1 class="card-header card-title text-center bg-inverse">LOG-IN</h1>
+        {% if form.errors %}
+            <div class="card-block">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <p>
+                        <stron>Incorrect</stron>
+                        Username or Password
+                    </p>
+                </div>
+            </div>
+        {% endif %}
+        <div class="card-block">
+            <form action="{% url 'account:login' %}" method="post">
+                {% for field in form %}
+                    <div class="form-group">
+                        {% with 'form-control,'|addstr:field.label as value %}
+                            {{ field|class_placeholder:value }}
+                        {% endwith %}
+                    </div>
+
+                {% endfor %}
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}"/>
+                <p><input type="submit" value="Log-in" class="btn btn-outline-info"></p>
+            </form>
+            <div><a href="{% url "social:begin" "facebook" %}" class="btn btn-primary btn-block">Login with Facebook</a>
+            </div>
+            <br>
+            <div><a href="{% url "social:begin" "twitter" %}" class="btn btn-info btn-block">Login with Twitter</a>
+            </div>
+            <br>
+            <div><a href="{% url "social:begin" "google-oauth2" %}" class="btn btn-danger btn-block">Login with Google</a>
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <p><a href="{% url "account:password_reset" %}">Forgot password?</a></p>
+            <p>Don't have an account<a href="{% url "account:register" %}"> Register Now</a></p>
+        </div>
+
+    </div>
+
+{% endblock %}

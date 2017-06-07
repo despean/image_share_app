@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load app_tags %}
+{% block title %}Bookmark an image{% endblock %}
+{% block content %}
+    <div class="w-75 m-auto text-center">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Bookmark an image</h1>
+                <form action="." method="post" enctype="multipart/form-data">
+                    {% for field in form %}
+                        <div class="form-group">
+                            {% with 'form-control,'|addstr:field.label as value %}
+                                {{ field|class_placeholder:value }}
+                            {% endwith %}
+                        </div>
+
+                    {% endfor %}
+                    {% csrf_token %}
+                    <input type="submit" value="Bookmark it!" class="btn btn-outline-info bg-inverse">
+                </form>
+            </div>
+            <div class="col-md-4">
+                <img src="{{ request.GET.url }}" class="img-thumbnail">
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

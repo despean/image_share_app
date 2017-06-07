@@ -1,0 +1,50 @@
+*{
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#main-login{
+    width: 35%;
+    margin: 0 auto;
+    border:1px solid #cccccc;
+    border-radius: 3px;
+}
+#main-login >h1 {
+    color: #ffffff;
+}
+.logo{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    color: #ffffff;
+
+}
+.count{
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    padding: 40px;
+}
+span > img{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin: 15px 0;
+}
+#like{
+    cursor: pointer;
+}
+.title{
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    border-right:1px solid #cccccc;
+}
+/*#header{*/
+     /*padding: 5px 0;*/
+/*}*/
+.active{
+    color: #31b0d5;
+}
+.my-form{
+    width: 35%;
+    margin: 10px auto;
+}

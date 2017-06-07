@@ -50,7 +50,7 @@
     $('#like').click(function(e){
         e.preventDefault();
         console.log(e.preventDefault());
-        $.post('{% url "images:like" %}',{id: $(this).data('id'), action: $(this).data('action')},
+        $.post('{% url "images_app:like" %}',{id: $(this).data('id'), action: $(this).data('action')},
                 function(data){
                     if (data['status'] == 'ok'){
                         var previous_action = $('#like').data('action');

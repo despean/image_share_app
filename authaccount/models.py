@@ -13,7 +13,7 @@ class Profile(models.Model):
 
 
   def __str__(self):
-    return 'Profile for user {}'.format(self.user.username)
+    return 'Procfile for user {}'.format(self.user.username)
 
   def get_thumb(self):
     im = get_thumbnail(self.photo, '190x190', crop='center', quality=99)

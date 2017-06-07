@@ -20,7 +20,7 @@
                     <a href="{% url "account:dashboard" %}" class="nav-link">My dashboard</a>
                 </span>
                 <span class="nav-item" {% if section == "images_app" %}class="active"{% endif %}>
-                    <a href="{% url "images:list" %}" class="nav-link">Images</a>
+                    <a href="{% url "images_app:list" %}" class="nav-link">Images</a>
                 </span>
                 <span class="nav-item" {% if section == "people" %}class="active bg-faded"{% endif %}>
                     <a href="{% url "account:user_list" %}" class="nav-link">People</a>

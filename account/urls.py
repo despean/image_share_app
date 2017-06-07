@@ -22,7 +22,7 @@ from authaccount import views
 urlpatterns = [
   url(r'^admin/', admin.site.urls),
   url(r'^account/', include('authaccount.urls', namespace='account')),
-  url(r'^images/', include('images_app.urls', namespace='images_app')),
+  url(r'^images_app/', include('images_app.urls', namespace='images_app')),
   url(r'^social_auth/', include('social_django.urls', namespace='social')),
   url(r'^$', views.main_index, name='main_index')
 ]

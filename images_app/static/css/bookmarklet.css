@@ -32,12 +32,12 @@
     color:#000;
 }
 
-#bookmarklet .images {
+#bookmarklet .images_app {
     margin-bottom:20px;
     overflow:auto;
 }
 
-#bookmarklet .images img {
+#bookmarklet .images_app img {
     border:1px solid #ccc;
     padding:2px;
     margin:2px;
@@ -46,8 +46,8 @@
     float:left;
 }
 
-#bookmarklet .images img.selected,
-#bookmarklet .images img:hover { 
+#bookmarklet .images_app img.selected,
+#bookmarklet .images_app img:hover {
     border:1px solid #12c064;
     opacity:1; 
 }
